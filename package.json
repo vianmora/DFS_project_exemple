@@ -1,0 +1,11 @@
+{
+  "name": "DFS_project_exemple",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/vianmora/DFS_project_exemple.git",
+  "author": "vianmora <vianmora@yahoo.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
