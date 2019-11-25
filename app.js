@@ -2,56 +2,62 @@ var http = require('http');
 var fs = require('fs');
 
 var monModule = require("./assets/module");
-
 const port = 3000;
 
-var server = http.createServer((request, response) =>{
+var express = require('express');
 
+var app = express()
 
-    if (request.url === "/" || request.url === "/home") {
-        response.writeHead(200,  {'Content-Type': 'text/html'});
+app.use("/static", express.static(__dirname + '/static'));
 
-        //file stream
-        var readStream = fs.createReadStream(__dirname + "/assets/index.html", "utf8");
-        readStream.pipe(response)
-    }
-    else if (request.url === "/hello_world") {
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'text/plain');
-        response.end("Hello world");
+app.get("/", (request, response) =>{
 
-    }
-    else if (request.url === "/bienvenue") {
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'text/html');
-        response.end("<html><head><title>home</title></head><body><h1>sweet home</h1></body></html>");
-    }
+    response.writeHead(200,  {'Content-Type': 'text/html'});
+    var readStream = fs.createReadStream(__dirname + "/assets/index.html", "utf8");
+    readStream.pipe(response)
+});
 
-    else if (request.url === "/tuut") {
-        response.statusCode = 200;
-        response.setHeader('Content-Type', 'text/plain');
+app.get("/contact", (request, response) =>{
 
-        monModule.klaxon();
-        console.log(monModule.reponse);
+    response.writeHead(200,  {'Content-Type': 'text/html'});
+    var readStream = fs.createReadStream(__dirname + "/assets/contact.html", "utf8");
+    readStream.pipe(response)
+});
 
-        response.end("regarde ta console");
-    }
+app.get("/hello_world", (request, response) => {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain');
+    response.end("Hello world");
+});
 
-    else if (request.url === "/gutenberg"){
-        response.writeHead(200,  {'Content-Type': 'text/html'});
+app.get("/bienvenue", (request, response) => {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/html');
+    response.end("<html><head><title>home</title></head><body><h1>sweet home</h1></body></html>");
+});
 
-        http.get("http://www.gutenberg.org/cache/epub/5781/pg5781.txt", (response_get) => {
-            response_get.setEncoding('utf8');
-            response_get.pipe(response)
-        });
-    }
+app.get("/tuut", (request, response) => {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain');
 
-    else {
-        response.statusCode = 404;
-        response.setHeader('Content-Type', 'text/plain');
-        response.end("erreur 404");
-    }
-})
+    monModule.klaxon();
+    console.log(monModule.reponse);
 
-server.listen(3000, 'localhost')
-console.log(`Server running at localhost:${port}/`)
+    response.end("regarde ta console");
+});
+
+app.get("/gutenberg", (request, response) => {
+    response.writeHead(200,  {'Content-Type': 'text/html'});
+
+    http.get("http://www.gutenberg.org/cache/epub/5781/pg5781.txt", (response_get) => {
+        response_get.setEncoding('utf8');
+        response_get.pipe(response)
+    });
+});
+
+app.use( (req, res, next) =>{
+   res.status(404).sendFile((__dirname + "/assets/404.html"))
+});
+
+app.listen(3000, 'localhost');
+console.log(`Server running at localhost:${port}/`);
