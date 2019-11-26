@@ -1,27 +1,26 @@
 var http = require('http');
 var fs = require('fs');
 
-var monModule = require("./assets/module");
+var monModule = require("./controler/module");
 const port = 3000;
 
 var express = require('express');
 
-var app = express()
+var app = express();
+app.set('view engine', 'ejs')
 
 app.use("/static", express.static(__dirname + '/static'));
 
 app.get("/", (request, response) =>{
-
-    response.writeHead(200,  {'Content-Type': 'text/html'});
-    var readStream = fs.createReadStream(__dirname + "/assets/index.html", "utf8");
-    readStream.pipe(response)
+    response.render("index");
 });
 
 app.get("/contact", (request, response) =>{
+    response.render("contact");
+});
 
-    response.writeHead(200,  {'Content-Type': 'text/html'});
-    var readStream = fs.createReadStream(__dirname + "/assets/contact.html", "utf8");
-    readStream.pipe(response)
+app.get('/profile/:name', (request, response) =>{
+    response.render('profile', {personne:request.params.name});
 });
 
 app.get("/hello_world", (request, response) => {
@@ -55,8 +54,8 @@ app.get("/gutenberg", (request, response) => {
     });
 });
 
-app.use( (req, res, next) =>{
-   res.status(404).sendFile((__dirname + "/assets/404.html"))
+app.use(function (req, res, next) {
+    res.status(404).render("404")
 });
 
 app.listen(3000, 'localhost');
