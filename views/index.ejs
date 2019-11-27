@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 
     <style>
         html, body {
@@ -15,7 +15,6 @@
             background: skyblue;
             color: #FFFFFF;
             font-size: 2em;
-            text-align: center;
 
         }
         p {
@@ -24,19 +23,24 @@
         h2{
             font-size: 0.5em;
         }
+        li{
+            font-size: 1em;
+        }
     </style>
 </head>
-    <body>
+    <body class="container align-content-center">
 
     <%- include ('partials/nav.ejs') %>
-
-    <h1>Enfin du web !</h1>
+    <div class="text-center">
+        <h1>Enfin du web !</h1>
         <p>Et on aime ça.</p>
 
         <p>
-            <h2>à la fin du cous devriez avoir les url suivantes </h2>
-            <ul>
-                <li><a href="/hello_world">Hello word en "Text/Plain"</a></li>
+        <h2>à la fin du cous devriez avoir les url suivantes </h2>
+    </div>
+
+        <div class="list-group d-inline-block text-left">
+            <li><a href="/hello_world" >Hello word en "Text/Plain"</a></li>
                 <li><a href="/profile/Brucker">Page de profil</a></li>
                 <li><a href="/contact">Page contact en HTML</a></li>
                 <li><a href="/bienvenue">Bienvenue en HTML </a></li>
@@ -44,6 +48,7 @@
                 <li><a href="/gutenberg">votre livre du projet gutenberg</a></li>
                 <li><a href="/n-importe-quoi">une erreur 404</a></li>
             </ul>
+        </div>
         </p>
     </body>
 </html>
