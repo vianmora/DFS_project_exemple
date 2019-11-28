@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 
 var monModule = require("./controler/module");
-const port = 3000;
+const port = 10421;
 
 var express = require('express');
 
@@ -58,5 +58,5 @@ app.use(function (req, res, next) {
     res.status(404).render("404")
 });
 
-app.listen(3000, 'localhost');
+app.listen(port, 'localhost');
 console.log(`Server running at localhost:${port}/`);
