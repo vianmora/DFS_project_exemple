@@ -14,17 +14,24 @@
 
             background: skyblue;
             color: #FFFFFF;
-            font-size: 2em;
-
         }
         p {
             font-family: 'Indie Flower', cursive;
+            font-size: 1.3;
         }
-        h2{
-            font-size: 0.5em;
+        h1{
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        article{
+            margin-left: 20%;
+            margin-right: 20%;
         }
         li{
-            font-size: 1em;
+            list-style-type: none;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -39,16 +46,17 @@
         <h2>à la fin du cous devriez avoir les url suivantes </h2>
     </div>
 
-        <div class="list-group d-inline-block text-left">
-            <li><a href="/hello_world" >Hello word en "Text/Plain"</a></li>
-                <li><a href="/profile/Brucker">Page de profil</a></li>
-                <li><a href="/contact">Page contact en HTML</a></li>
-                <li><a href="/bienvenue">Bienvenue en HTML </a></li>
-                <li><a href="/tuut">Tuuuut sur la console</a></li>
-                <li><a href="/gutenberg">votre livre du projet gutenberg</a></li>
-                <li><a href="/n-importe-quoi">une erreur 404</a></li>
+        <article class="list-group d-flex">
+            <ul class="justify-content-space-around">
+                <li><a href="/hello_world" class="list-group-item list-group-item-action">Hello word en "Text/Plain"</a></li>
+                <li><a href="/profile/MrBrucker" class="list-group-item list-group-item-action">Page de profil</a></li>
+                <li><a href="/contact" class="list-group-item list-group-item-action">Page contact en HTML</a></li>
+                <li><a href="/bienvenue" class="list-group-item list-group-item-action">Bienvenue en HTML </a></li>
+                <li><a href="/tuut" class="list-group-item list-group-item-action">Tuuuut sur la console</a></li>
+                <li><a href="/gutenberg" class="list-group-item list-group-item-action">votre livre du projet gutenberg</a></li>
+                <li><a href="/n-importe-quoi" class="list-group-item list-group-item-action">une erreur 404</a></li>
             </ul>
-        </div>
+        </article>
         </p>
     </body>
 </html>

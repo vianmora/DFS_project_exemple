@@ -1,7 +1,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>404</title>
+    <title>Profil</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 
     <style>
         html, body {
@@ -10,14 +12,18 @@
 
             background: skyblue;
             color: #FFFFFF;
-            font-size: 2em;
+        }
+        div{
             text-align: center;
         }
     </style>
 </head>
 <body>
 <%- include ('partials/nav.ejs') %>
-<h1>Bonjour <%= personne%></h1>
+<div>
+    <h1>Bonjour <%= personne%></h1>
+    <p>essaye de changer l'url ;)</p>
+</div>
 
 </body>
 </html>
